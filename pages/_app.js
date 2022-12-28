@@ -1,5 +1,40 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import Router from "next/router";
+import Head from "next/head";
+import Layout from "../pages/components/Layout";
+import NProgress from "nprogress";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "../pages/theme";
+import CssBaseline from "@mui/material/CssBaseline";
+function MyApp({ Component, pageProps }) {
+  NProgress.configure({ showSpinner: false });
+  Router.events.on("routeChangeStart", () => {
+    NProgress.start();
+  });
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  Router.events.on("routeChangeComplete", () => {
+    NProgress.done();
+  });
+  return (
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
+          integrity="sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <Layout>
+          <ThemeProvider theme={theme}>
+            <>
+              <CssBaseline />
+              <Component {...pageProps} />
+            </>
+          </ThemeProvider>
+        </Layout>
+      </Head>
+    </>
+  );
 }
+export default MyApp;
