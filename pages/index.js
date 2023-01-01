@@ -35,11 +35,6 @@ const Home = ({ properties }) => {
         <Icon paddingleft="2" w="7" as={BsFilter} />
       </Grid>
       {searchFilters && <SearchFilters />}
-      {/* <Text fontSize="2xl" p="4" fontWeight="bold">
-        {currentPath == "/"
-          ? `Choose category: `
-          : `Category: ${router.query.category}`}
-      </Text> */}
 
       <Center mt={4} px={3}>
         <SimpleGrid columns={[1, 2, 3]} spacing="50px" rowGap={9}>

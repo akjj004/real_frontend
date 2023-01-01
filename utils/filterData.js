@@ -1,22 +1,9 @@
 export const filterData = [
   {
     items: [
-      {
-        name: "Apartment",
-        value: "Apartment",
-      },
-      {
-        name: "House",
-        value: "House",
-      },
-      {
-        name: "Land",
-        value: "Land",
-      },
-      {
-        name: "Condo",
-        value: "Condo",
-      },
+      { name: "apartment", value: "Apartment" },
+      { name: "house", value: "House" },
+      { name: "room", value: "Room" },
     ],
     placeholder: "Categories",
     queryName: "category",
@@ -37,10 +24,32 @@ export const filterData = [
     placeholder: "Rooms",
     queryName: "rooms",
   },
+  {
+    items: [
+      { name: "warsaw", value: "Warsaw" },
+      { name: "krakow", value: "Krakow" },
+      { name: "poznan", value: "Poznan" },
+      { name: "wroclaw", value: "Wroclaw" },
+    ],
+    placeholder: "Location",
+    queryName: "location",
+  },
+  {
+    items: [
+      { name: "0-1000", value: "0 - 1,000" },
+      { name: "1000-3000", value: "1,000 - 3,000" },
+      { name: "3000-5000", value: "3,000 - 5,000" },
+      { name: "5000-10000", value: "5,000 - 10,000" },
+      { name: "10000-20000", value: "10,000 - 20,000" },
+      { name: "20000+", value: "20,000+" },
+    ],
+    placeholder: "Price Range",
+    queryName: "priceRange",
+  },
 ];
 
 export const getFilterValues = (filterValues) => {
-  const { category, rooms } = filterValues;
+  const { category, rooms, location, priceRange } = filterValues;
   const values = [
     {
       name: "category",
@@ -49,6 +58,14 @@ export const getFilterValues = (filterValues) => {
     {
       name: "rooms",
       value: rooms,
+    },
+    {
+      name: "location",
+      value: location,
+    },
+    {
+      name: "priceRange",
+      value: priceRange,
     },
   ];
   return values;
