@@ -1,60 +1,64 @@
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { baseUrl, fetchApi } from "../pages/api/fetchApi";
+import Property from "../components/Property";
 import {
-  Container,
-  Grid,
-  Typography,
+  Flex as Grid,
   Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Button,
-} from "@mui/material";
-
+  Text,
+  Icon,
+  Divider,
+  SimpleGrid,
+  Center,
+} from "@chakra-ui/react";
+import { BsFilter } from "react-icons/bs";
+import SearchFilters from "../components/SearchFilters";
 const Home = ({ properties }) => {
-  console.log(properties);
+  const router = useRouter();
+  const [searchFilters, setSearchFilters] = useState(false);
+
   return (
-    <Box mt={4}>
-      <Container maxWidth="lg">
-        <Grid container spacing={4}>
+    <Box>
+      <Grid
+        onClick={() => setSearchFilters(!searchFilters)}
+        cursor="pointer"
+        bg="blue.400"
+        borderBottom="1px"
+        borderColor="blue.400"
+        p="2"
+        fontWeight="black"
+        fontSize="lg"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <Text>Search Products by filters</Text>
+        <Icon paddingleft="2" w="7" as={BsFilter} />
+      </Grid>
+      {searchFilters && <SearchFilters />}
+      {/* <Text fontSize="2xl" p="4" fontWeight="bold">
+        {currentPath == "/"
+          ? `Choose category: `
+          : `Category: ${router.query.category}`}
+      </Text> */}
+
+      <Center mt={4} px={3}>
+        <SimpleGrid columns={[1, 2, 3]} spacing="50px" rowGap={9}>
           {properties._embedded.properties.map((property) => (
-            <Grid item xs={12} sm={6} md={4} key={property.id}>
-              <Card>
-                <CardMedia
-                  component="img"
-                  alt={property.title}
-                  height="140"
-                  image={property.images[0]}
-                  title={property.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {property.address.street}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                  >
-                    {property.squareFootage} sq ft | {property.bedrooms} bed |{" "}
-                    {property.bathrooms} bath
-                  </Typography>
-                </CardContent>
-                <Box display="flex" justifyContent="flex-end" p={1}>
-                  <Button size="small" color="primary">
-                    Learn More
-                  </Button>
-                </Box>
-              </Card>
-            </Grid>
+            <Property key={property._links.self.href} property={property} /> // Render a Property component for each property
           ))}
-        </Grid>
-      </Container>
+        </SimpleGrid>
+      </Center>
     </Box>
   );
 };
 
-export async function getServerSideProps() {
-  const listProperties = await fetchApi(`${baseUrl}properties?page=0&size=20`);
+export async function getServerSideProps({ query }) {
+  const category = query.category || "1";
+  const findByRooms = query.rooms || "0";
+  const listProperties = await fetchApi(
+    // `${baseUrl}properties?page=0&size=20&sort=string&category=${category}`
+    `${baseUrl}properties/search/findByRooms?rooms=${findByRooms}`
+  );
 
   return {
     props: {

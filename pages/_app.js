@@ -1,11 +1,9 @@
-import "../styles/globals.css";
 import Router from "next/router";
 import Head from "next/head";
-import Layout from "../pages/components/Layout";
 import NProgress from "nprogress";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "../pages/theme";
-import CssBaseline from "@mui/material/CssBaseline";
+import Layout from "../components/Layout";
+// import chakra provider
+import { ChakraProvider } from "@chakra-ui/react";
 function MyApp({ Component, pageProps }) {
   NProgress.configure({ showSpinner: false });
   Router.events.on("routeChangeStart", () => {
@@ -25,16 +23,14 @@ function MyApp({ Component, pageProps }) {
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
-        <Layout>
-          <ThemeProvider theme={theme}>
-            <>
-              <CssBaseline />
-              <Component {...pageProps} />
-            </>
-          </ThemeProvider>
-        </Layout>
       </Head>
+      <ChakraProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
     </>
   );
 }
+
 export default MyApp;
