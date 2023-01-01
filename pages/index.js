@@ -52,7 +52,8 @@ export async function getServerSideProps({ query }) {
   const findByRooms = query.rooms || "0";
   const listProperties = await fetchApi(
     // `${baseUrl}properties?page=0&size=20&sort=string&category=${category}`
-    `${baseUrl}properties/search/findByRooms?rooms=${findByRooms}`
+    // properties?page=0&size=20&sort=asc
+    `${baseUrl}properties/search/findByCategory?category=${category}&findByRooms?rooms=${findByRooms}`
   );
 
   return {

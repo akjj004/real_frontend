@@ -1,9 +1,9 @@
 export const filterData = [
   {
     items: [
-      { name: "apartment", value: "Apartment" },
-      { name: "house", value: "House" },
-      { name: "room", value: "Room" },
+      { name: "apartment", value: "1" },
+      { name: "house", value: "2" },
+      { name: "room", value: "3" },
     ],
     placeholder: "Categories",
     queryName: "category",
