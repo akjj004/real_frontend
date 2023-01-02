@@ -26,30 +26,101 @@ export const filterData = [
   },
   {
     items: [
-      { name: "warsaw", value: "Warsaw" },
-      { name: "krakow", value: "Krakow" },
-      { name: "poznan", value: "Poznan" },
-      { name: "wroclaw", value: "Wroclaw" },
+      { name: "warsaw", value: "1" },
+      { name: "krakow", value: "2" },
+      { name: "poznan", value: "3" },
+      { name: "wroclaw", value: "4" },
     ],
     placeholder: "Location",
     queryName: "location",
   },
   {
     items: [
-      { name: "0-1000", value: "0 - 1,000" },
-      { name: "1000-3000", value: "1,000 - 3,000" },
-      { name: "3000-5000", value: "3,000 - 5,000" },
-      { name: "5000-10000", value: "5,000 - 10,000" },
-      { name: "10000-20000", value: "10,000 - 20,000" },
-      { name: "20000+", value: "20,000+" },
+      { name: "0", value: "0" },
+      { name: "1000", value: "1000" },
+      { name: "3000", value: "3000" },
+      { name: "5000", value: "5000" },
+      { name: "10000", value: "10000" },
+      { name: "20000", value: "20000" },
+      { name: "30000", value: "30000" },
+      { name: "40000", value: "40000" },
+      { name: "50000", value: "50000" },
+      { name: "60000", value: "60000" },
+      { name: "70000", value: "70000" },
+      { name: "80000", value: "80000" },
+      { name: "90000", value: "90000" },
+      { name: "100000", value: "100000" },
     ],
-    placeholder: "Price Range",
-    queryName: "priceRange",
+    placeholder: "Min Price",
+    queryName: "minPrice",
+  },
+  {
+    items: [
+      { name: "0", value: "0" },
+      { name: "1000", value: "1000" },
+      { name: "3000", value: "3000" },
+      { name: "5000", value: "5000" },
+      { name: "10000", value: "10000" },
+      { name: "20000", value: "20000" },
+      { name: "30000", value: "30000" },
+      { name: "40000", value: "40000" },
+      { name: "50000", value: "50000" },
+      { name: "60000", value: "60000" },
+      { name: "70000", value: "70000" },
+      { name: "80000", value: "80000" },
+      { name: "90000", value: "90000" },
+      { name: "100000", value: "100000" },
+    ],
+    placeholder: "Max Price",
+    queryName: "maxPrice",
+  },
+  {
+    items: [
+      { name: "0", value: "0" },
+      { name: "500", value: "500" },
+      { name: "1000", value: "1000" },
+      { name: "1500", value: "1500" },
+      { name: "2000", value: "2000" },
+      { name: "2500", value: "2500" },
+      { name: "3000", value: "3000" },
+      { name: "3500", value: "3500" },
+      { name: "4000", value: "4000" },
+      { name: "4500", value: "4500" },
+      { name: "5000", value: "5000" },
+    ],
+    placeholder: "Min Square M2",
+    queryName: "minSquareFootage",
+  },
+  {
+    items: [
+      { name: "0", value: "0" },
+      { name: "500", value: "500" },
+      { name: "1000", value: "1000" },
+      { name: "1500", value: "1500" },
+      { name: "2000", value: "2000" },
+      { name: "2500", value: "2500" },
+      { name: "3000", value: "3000" },
+      { name: "3500", value: "3500" },
+      { name: "4000", value: "4000" },
+      { name: "4500", value: "4500" },
+      { name: "5000", value: "5000" },
+    ],
+    placeholder: "Max Square M2",
+    queryName: "maxSquareFootage",
   },
 ];
 
 export const getFilterValues = (filterValues) => {
-  const { category, rooms, location, priceRange } = filterValues;
+  const {
+    category,
+    rooms,
+    location,
+    priceRange,
+    minPrice,
+    maxPrice,
+    minSquareFootage,
+    maxSquareFootage,
+  } = filterValues;
   const values = [
     {
       name: "category",
@@ -66,6 +137,22 @@ export const getFilterValues = (filterValues) => {
     {
       name: "priceRange",
       value: priceRange,
+    },
+    {
+      name: "minPrice",
+      value: minPrice,
+    },
+    {
+      name: "maxPrice",
+      value: maxPrice,
+    },
+    {
+      name: "minSquareFootage",
+      value: minSquareFootage,
+    },
+    {
+      name: "maxSquareFootage",
+      value: maxSquareFootage,
     },
   ];
   return values;

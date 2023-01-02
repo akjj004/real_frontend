@@ -38,8 +38,8 @@ const Home = ({ properties }) => {
 
       <Center mt={4} px={3}>
         <SimpleGrid columns={[1, 2, 3]} spacing="50px" rowGap={9}>
-          {properties._embedded.properties.map((property) => (
-            <Property key={property._links.self.href} property={property} /> // Render a Property component for each property
+          {properties.map((property) => (
+            <Property key={property.id} property={property} /> // Render a Property component for each property
           ))}
         </SimpleGrid>
       </Center>
@@ -48,12 +48,18 @@ const Home = ({ properties }) => {
 };
 
 export async function getServerSideProps({ query }) {
-  const category = query.category || "1";
-  const findByRooms = query.rooms || "0";
+  const category = query.category || 1;
+  const findByRooms = query.rooms || 0;
+  const location = query.location || 1;
+  const minPrice = query.minPrice || 0;
+  const maxPrice = query.maxPrice || 0;
+  const minSquareFootage = query.minSquareFootage || 0;
+  const maxSquareFootage = query.maxSquareFootage || 0;
   const listProperties = await fetchApi(
     // `${baseUrl}properties?page=0&size=20&sort=string&category=${category}`
     // properties?page=0&size=20&sort=asc
-    `${baseUrl}properties/search/findByCategory?category=${category}&findByRooms?rooms=${findByRooms}`
+    // `${baseUrl}properties/search/findByLocation?location=${location}&findByCategory?category=${category}&findByRooms?rooms=${findByRooms}`
+    `${baseUrl}api/v1/properties/findBy?rooms=${findByRooms}&location=${location}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&minSquareFootage=${minSquareFootage}&maxSquareFootage=${maxSquareFootage}`
   );
 
   return {

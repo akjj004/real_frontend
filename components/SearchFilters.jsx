@@ -26,6 +26,18 @@ export default function SearchFilters() {
     router.push({ pathname: path, query: query });
   };
 
+  useEffect(() => {
+    const defaultValues = {
+      location: "1",
+      rooms: "1",
+      minPrice: "0",
+      maxPrice: "10000",
+      minSquareFootage: "1000",
+      maxSquareFootage: "2000",
+    };
+    searchProperties(defaultValues);
+  }, []); // The empty array ensures that the effect only runs on mount
+
   return (
     <Flex
       bg="blue.300"

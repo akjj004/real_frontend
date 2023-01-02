@@ -26,49 +26,59 @@ const Property = ({
     images,
     location,
     nearestAmenities,
+    id,
   },
 }) => (
-  <Flex
-    flexWrap="wrap"
-    w="420px"
-    p="5"
-    paddingTop="0px"
-    justifyContent="flex-start"
-    cursor="pointer"
-  >
-    <Box>
-      <Image src={images[0]} width={400} height={260} />
-    </Box>
-    <Box w="full">
-      <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
-        <Flex alignItems="center">
-          <Box paddingRight="3" color="green.400">
-            {isVerified && <GoVerified />}
-          </Box>
-          <Text fontWeight="bold" fontSize="lg">
-            EUR {price}
-          </Text>
+  <Link href={`/property/${id}`} passHref>
+    <Flex
+      flexWrap="wrap"
+      w="420px"
+      p="5"
+      paddingTop="0px"
+      justifyContent="flex-start"
+      cursor="pointer"
+    >
+      <Box>
+        {
+          images.map((imageUrl, index) => (
+            <Image
+              key={index}
+              src={imageUrl.url}
+              width={400}
+              height={260}
+              alt="pictures"
+            />
+          ))[0]
+        }
+      </Box>
+      <Box w="full">
+        <Flex paddingTop="2" alignItems="center" justifyContent="space-between">
+          <Flex alignItems="center">
+            <Box paddingRight="3" color="green.400">
+              {isVerified && <GoVerified />}
+            </Box>
+            <Text fontWeight="bold" fontSize="lg">
+              EUR {price}
+            </Text>
+          </Flex>
         </Flex>
-        {/* <Box>
-            <Avatar size="sm" src={agency?.logo?.url}></Avatar>
-          </Box> */}
-      </Flex>
-      <Flex
-        alignItems="center"
-        p="1"
-        justifyContent="space-between"
-        w="250px"
-        color="blue.400"
-      >
-        {rooms}
-        <FaBed /> | {bathrooms} <FaBath /> | {millify(squareFootage)} sqft{" "}
-        <BsGridFill />
-      </Flex>
-      <Text fontSize="lg">
-        {title.length > 30 ? title.substring(0, 30) + "..." : title}
-      </Text>
-    </Box>
-  </Flex>
+        <Flex
+          alignItems="center"
+          p="1"
+          justifyContent="space-between"
+          w="250px"
+          color="blue.400"
+        >
+          {rooms}
+          <FaBed /> | {bathrooms} <FaBath /> | {millify(squareFootage)} sqft{" "}
+          <BsGridFill />
+        </Flex>
+        <Text fontSize="lg">
+          {title.length > 30 ? title.substring(0, 30) + "..." : title}
+        </Text>
+      </Box>
+    </Flex>
+  </Link>
 );
 
 export default Property;
