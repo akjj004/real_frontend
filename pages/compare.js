@@ -26,12 +26,12 @@ function CompareProperties({ properties }) {
       <Table>
         <Thead>
           <Tr>
-            <Th>Image</Th>
-            <Th>Price</Th>
-            <Th>Rooms</Th>
-            <Th>Bathrooms</Th>
-            <Th>Square Footage</Th>
-            <Th>Title</Th>
+            <Th>Obrazek</Th>
+            <Th>Cena</Th>
+            <Th>Liczba pokoi</Th>
+            <Th>Liczba Łazienek</Th>
+            <Th>Powierzchnia</Th>
+            <Th>Tytuł</Th>
             <Th>
               {" "}
               <Button
@@ -39,7 +39,7 @@ function CompareProperties({ properties }) {
                   router.back();
                 }}
               >
-                Return
+                Powrót
               </Button>
             </Th>
           </Tr>

@@ -17,7 +17,6 @@ import millify from "millify";
 import { FaBed, FaBath } from "react-icons/fa";
 
 const Property = ({ property, button }) => {
-
   const { images, price, rooms, bathrooms, squareFootage, title, id } =
     property;
 
@@ -39,7 +38,7 @@ const Property = ({ property, button }) => {
             <Heading size="md">{title}</Heading>
             <Text>{/* Add a description of the property here */}</Text>
             <Text color="blue.600" fontSize="2xl">
-              EUR {price}
+              PLN {price}
             </Text>
           </Stack>
         </CardBody>
@@ -53,8 +52,8 @@ const Property = ({ property, button }) => {
             color="blue.400"
           >
             {rooms}
-            <FaBed /> | {bathrooms} <FaBath /> | {millify(squareFootage)} sqft{" "}
-            <BsGridFill />
+            <FaBed /> | {bathrooms} <FaBath /> |{" "}
+            {millify(squareFootage, { units: ["m²"] })} m² <BsGridFill />
           </Flex>
         </CardFooter>
       </Card>

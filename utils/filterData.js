@@ -5,7 +5,7 @@ export const filterData = [
       { name: "house", value: "2" },
       { name: "room", value: "3" },
     ],
-    placeholder: "Categories",
+    placeholder: "Typ",
     queryName: "category",
   },
   {
@@ -21,7 +21,7 @@ export const filterData = [
       { name: "9", value: "9" },
       { name: "10", value: "10" },
     ],
-    placeholder: "Rooms",
+    placeholder: "Pokoje",
     queryName: "rooms",
   },
   {
@@ -31,7 +31,7 @@ export const filterData = [
       { name: "poznan", value: "3" },
       { name: "wroclaw", value: "4" },
     ],
-    placeholder: "Location",
+    placeholder: "Lokalizacja",
     queryName: "location",
   },
   {
@@ -51,7 +51,7 @@ export const filterData = [
       { name: "90000", value: "90000" },
       { name: "100000", value: "100000" },
     ],
-    placeholder: "Min Price",
+    placeholder: "Cena minimalna",
     queryName: "minPrice",
   },
   {
@@ -71,7 +71,7 @@ export const filterData = [
       { name: "90000", value: "90000" },
       { name: "100000", value: "100000" },
     ],
-    placeholder: "Max Price",
+    placeholder: "Cena maksymalna m²",
     queryName: "maxPrice",
   },
   {
@@ -88,7 +88,7 @@ export const filterData = [
       { name: "4500", value: "4500" },
       { name: "5000", value: "5000" },
     ],
-    placeholder: "Min Square M2",
+    placeholder: "Powierzchnia od",
     queryName: "minSquareFootage",
   },
   {
@@ -105,7 +105,7 @@ export const filterData = [
       { name: "4500", value: "4500" },
       { name: "5000", value: "5000" },
     ],
-    placeholder: "Max Square M2",
+    placeholder: "Powierzchnia do m²",
     queryName: "maxSquareFootage",
   },
 ];

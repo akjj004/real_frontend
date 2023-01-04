@@ -54,7 +54,7 @@ const PropertyDetails = ({
                 router.back();
               }}
             >
-              Return
+              Powrót
             </Button>
           </Box>
         </Flex>
@@ -62,11 +62,11 @@ const PropertyDetails = ({
       {images && <ImageScrollbar data={images} />}
       <Box w="full" p="6">
         <Flex paddingTop="2" alignItems="center">
-          <Box paddingRight="3" color="green.400">
+          {/* <Box paddingRight="3" color="green.400">
             {isVerified && <GoVerified />}
-          </Box>
+          </Box> */}
           <Text fontWeight="bold" fontSize="lg">
-            EUR {price}
+            PLN {price}
           </Text>
           <Spacer />
           {/* <Avatar size="sm" src={agency?.logo?.url}></Avatar> */}
@@ -79,7 +79,7 @@ const PropertyDetails = ({
           color="blue.400"
         >
           {rooms}
-          <FaBed /> | {bathrooms} <FaBath /> | {millify(squareFootage)} sqft{" "}
+          <FaBed /> | {bathrooms} <FaBath /> | {millify(squareFootage)} m²{" "}
           <BsGridFill />
         </Flex>
       </Box>
@@ -103,7 +103,7 @@ const PropertyDetails = ({
           borderColor="gray.100"
           p="3"
         >
-          <Text>category</Text>
+          <Text>Typ</Text>
           <Text fontWeight="bold">{categoryName}</Text>
         </Flex>
         {furnishingStatus && (
@@ -114,7 +114,7 @@ const PropertyDetails = ({
             borderColor="gray.100"
             p="3"
           >
-            <Text>Furnishing Status</Text>
+            <Text>Wyposażenie</Text>
             <Text fontWeight="bold">{furnishingStatus}</Text>
           </Flex>
         )}
@@ -122,7 +122,7 @@ const PropertyDetails = ({
       <Box>
         {nearestAmenities.length && (
           <Text fontSize="2xl" fontWeight="black" marginTop="5">
-            Facilites:
+            Udogodnienia:
           </Text>
         )}
         <Flex flexWrap="wrap">

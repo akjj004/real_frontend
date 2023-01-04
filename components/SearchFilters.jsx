@@ -70,7 +70,9 @@ export default function SearchFilters() {
           </Box>
         ))}
         <Box pt={2}>
-          <Button onClick={() => searchProperties(filterValues)}>Search</Button>
+          <Button onClick={() => searchProperties(filterValues)}>
+            Wyszukaj
+          </Button>
         </Box>
       </Stack>
     </Flex>

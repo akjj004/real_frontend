@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { baseUrl, fetchApi } from "../pages/api/fetchApi";
 import Property from "../components/Property";
@@ -7,7 +7,6 @@ import {
   Box,
   Text,
   Icon,
-  Divider,
   SimpleGrid,
   Center,
   Button,
@@ -38,7 +37,7 @@ const Home = ({ properties }) => {
           justifyContent="center"
           alignItems="center"
         >
-          <Text>Search Products by filters</Text>
+          <Text>Wyszukaj nieruchomości po filtrach</Text>
           <Icon paddingleft="2" w="7" as={BsFilter} />
         </Grid>
         {searchFilters && <SearchFilters />}
@@ -78,9 +77,10 @@ const Home = ({ properties }) => {
           </SimpleGrid>
         </Center>
       </Box>
-      <Box mx={2}>
+
+      <Box pt={10} mx={2}>
         <Text mb={4} fontSize="lg">
-          Selected Properties:
+          Wybrane nieruchomości:
         </Text>
         <SimpleGrid columns={[1, 2, 3]} spacing="50px" rowGap={9}>
           {selectedProperties.map((property) => (
@@ -98,7 +98,7 @@ const Home = ({ properties }) => {
             });
           }}
         >
-          Compare Properties
+          Porównaj nieruchomości
         </Button>
       </Box>
     </>
