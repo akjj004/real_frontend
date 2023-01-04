@@ -10,40 +10,98 @@ import {
   Divider,
   SimpleGrid,
   Center,
+  Button,
+  Card,
+  CardBody,
 } from "@chakra-ui/react";
+import { IconButton } from "@chakra-ui/react";
 import { BsFilter } from "react-icons/bs";
+import { MdCompareArrows } from "react-icons/md";
 import SearchFilters from "../components/SearchFilters";
 const Home = ({ properties }) => {
   const router = useRouter();
   const [searchFilters, setSearchFilters] = useState(false);
+  const [selectedProperties, setSelectedProperties] = useState([]);
 
   return (
-    <Box>
-      <Grid
-        onClick={() => setSearchFilters(!searchFilters)}
-        cursor="pointer"
-        bg="blue.400"
-        borderBottom="1px"
-        borderColor="blue.400"
-        p="2"
-        fontWeight="black"
-        fontSize="lg"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Text>Search Products by filters</Text>
-        <Icon paddingleft="2" w="7" as={BsFilter} />
-      </Grid>
-      {searchFilters && <SearchFilters />}
+    <>
+      <Box>
+        <Grid
+          onClick={() => setSearchFilters(!searchFilters)}
+          cursor="pointer"
+          bg="blue.400"
+          borderBottom="1px"
+          borderColor="blue.400"
+          p="2"
+          fontWeight="black"
+          fontSize="lg"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Text>Search Products by filters</Text>
+          <Icon paddingleft="2" w="7" as={BsFilter} />
+        </Grid>
+        {searchFilters && <SearchFilters />}
 
-      <Center mt={4} px={3}>
+        <Center mt={4} px={3}>
+          <SimpleGrid columns={[1, 2, 3]} spacing="50px" rowGap={9}>
+            {properties.map((property) => (
+              <>
+                <Card maxW="sm">
+                  <CardBody>
+                    <IconButton
+                      aria-label="Compare Button"
+                      icon={<MdCompareArrows />}
+                      onClick={() => {
+                        if (selectedProperties.includes(property)) {
+                          setSelectedProperties(
+                            selectedProperties.filter((p) => p !== property)
+                          );
+                        } else {
+                          setSelectedProperties([
+                            ...selectedProperties,
+                            property,
+                          ]);
+                        }
+                      }}
+                      style={{ position: "absolute", top: 0, right: 0 }}
+                    />
+                  </CardBody>
+                  <Property
+                    key={property.id}
+                    property={property}
+                    style={{ position: "relative" }}
+                  ></Property>
+                </Card>
+              </>
+            ))}
+          </SimpleGrid>
+        </Center>
+      </Box>
+      <Box mx={2}>
+        <Text mb={4} fontSize="lg">
+          Selected Properties:
+        </Text>
         <SimpleGrid columns={[1, 2, 3]} spacing="50px" rowGap={9}>
-          {properties.map((property) => (
-            <Property key={property.id} property={property} /> // Render a Property component for each property
+          {selectedProperties.map((property) => (
+            <Property key={property.id} property={property} />
           ))}
         </SimpleGrid>
-      </Center>
-    </Box>
+        <Button
+          mt={4}
+          onClick={() => {
+            router.push({
+              pathname: "/compare",
+              query: {
+                selectedProperties: selectedProperties.map((p) => p.id),
+              },
+            });
+          }}
+        >
+          Compare Properties
+        </Button>
+      </Box>
+    </>
   );
 };
 
